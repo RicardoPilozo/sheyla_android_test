@@ -10,10 +10,12 @@ fun UserDto.toDomain(): User? {
      - Mapear fullName → name
      - NO lanzar excepciones
      */
-    //return null  esta retornando siempre nulos
+
 
     /*
-    Como no se desea mostrar los datos si una de las variables es null
+    El error es que siempre retornaba null
+    Solución:
+    Como no se desea mostrar el reguistro si una de las variables es null
     con un if podemos decir que si alguno es null retorne null caso contrario
     retorne normalmente los datos
     */

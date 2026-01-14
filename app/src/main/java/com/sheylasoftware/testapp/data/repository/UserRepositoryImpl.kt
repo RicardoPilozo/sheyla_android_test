@@ -25,6 +25,8 @@ class UserRepositoryImpl(
         Se mapea y se ignoran los elementos invalidos con .mapNotNull
         lo de no aplica la logica del negocio(edad) se esta validando datos eso
         es muy aparte de la logica de negocio
+        pero si se referia a que la edad puede o no ser null simplemente
+        no se lo toma en cuenta en el if
          */
         return remoteDataSource.fetchUsers()
             .mapNotNull { it.toDomain() }
