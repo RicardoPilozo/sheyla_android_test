@@ -25,6 +25,10 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import com.sheylasoftware.testapp.di.ServiceLocator
 import com.sheylasoftware.testapp.domain.model.User
 import com.sheylasoftware.testapp.ui.theme.TestappTheme
+import androidx.compose.material3.Card
+import androidx.compose.material3.CardDefaults
+import androidx.compose.material3.Text
+
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -60,7 +64,7 @@ fun UserScreen(
     ) {
 
         Button(
-            onClick = { viewModel.loadUsers() },
+            onClick = viewModel::loadUsers,
             modifier = Modifier.fillMaxWidth()
         ) {
             Text(text = "Cargar usuarios")
@@ -83,12 +87,21 @@ fun UserScreen(
 
 @Composable
 fun UserItem(user: User) {
-    Column(
+    Card(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(8.dp)
+            .padding(vertical = 4.dp),
+        elevation = CardDefaults.cardElevation(defaultElevation = 2.dp)
     ) {
-        Text(text = user.name, style = MaterialTheme.typography.titleMedium)
-        Text(text = "Edad: ${user.age}")
+        Column(modifier = Modifier.padding(12.dp)) {
+            Text(
+                text = user.name,
+                style = MaterialTheme.typography.titleMedium
+            )
+            Text(
+                text = "Edad: ${user.age}",
+                style = MaterialTheme.typography.bodyMedium
+            )
+        }
     }
 }
